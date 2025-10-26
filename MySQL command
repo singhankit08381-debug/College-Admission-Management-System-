@@ -1,0 +1,29 @@
+CREATE DATABASE college_admission;
+USE college_admission;
+CREATE TABLE students (
+  student_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(100),
+  marks FLOAT,
+  course_preference VARCHAR(50)
+);
+
+CREATE TABLE courses (
+  course_id INT AUTO_INCREMENT PRIMARY KEY,
+  course_name VARCHAR(50),
+  cutoff_marks FLOAT
+);
+
+CREATE TABLE applications (
+  app_id INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT,
+  course_id INT,
+  status VARCHAR(20),
+  FOREIGN KEY (student_id) REFERENCES students(student_id),
+  FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+INSERT INTO courses(course_name, cutoff_marks) VALUES
+('BSc IT', 70),
+('BSc CS', 75),
+('BCom', 60),
+('BA', 55);
